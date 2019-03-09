@@ -12,8 +12,8 @@ import { VisitorDataComponent } from './visitor-data/visitor-data.component';
 const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:HomeComponent },
-  { path: "scanqr", component: ScanQrComponent },
-  { path: "register", component: RegisterComponent },
+  { path: "home/scanqr", component: ScanQrComponent },
+  { path: "home/register", component: RegisterComponent },
   { path: "visitor-data/:id/:name/:refEmail/:purpose", component: VisitorDataComponent}
 ];
 
