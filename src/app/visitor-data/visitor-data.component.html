@@ -1,0 +1,46 @@
+<div class="card registrationForm">
+  <div class="card-body">
+  	<div class="image-card">
+  		<webcam
+  		[width]="300"
+  		[trigger]="triggerObservable" 
+  		(imageCapture)="handleImage($event)" 
+  		*ngIf="showWebcam"
+        [allowCameraSwitch]="allowCameraSwitch"
+        [switchCamera]="nextWebcamObservable"
+        [videoOptions]="videoOptions"
+        [imageQuality]="1"
+        (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"
+    ></webcam>
+  		<img *ngIf="showImageCard" src="../../../../assets/demo.jpg">
+  		<img *ngIf="webcamImage" [src]="webcamImage.imageAsDataUrl"/>
+  	</div>
+  	<button (click)="startCamera()" *ngIf=showTakePicButton>Take Pic</button>
+  	<button (click)="triggerSnapshot();" *ngIf=showSnapPicButton>Take Pic</button>
+    <button (click)="reTakePicFun();" *ngIf=showRetakePicButton>Retake Pic</button>
+    <form>
+      <div class="form-group">
+        <label for="visitorName" class="inline">Visitor Name</label>
+        <input type="text" disabled="disabled" class="form-control" name="visitorName" id="visitorName" value={{visitorName}}>
+      </div>
+
+      <div class="form-group">
+        <label for="purpose">Purpose</label>
+        <input type="text" disabled="disabled" class="form-control" name="purpose" id="purpose" value="{{purpose}}">
+      </div>
+
+      <div class="form-group">
+        <label for="contactPerson">visitor Email</label>
+        <input type="text" disabled="disabled" class="form-control" name="contactPerson" id="contactPerson" value="{{id}}">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Visiting Employee Email</label>
+        <input type="email" class="form-control" disabled="disabled" name="email" id="email" value="{{refEmail}}">
+      </div>
+      <button class="btn btn-success btn-block">Gate Pass | Cryptobyte Corprations</button>
+    </form>
+  </div>  
+</div>
+<button class="btn btn-success btn-block" *ngIf="webcamImage" (click)="downloadPdf()">Print Gate Pass for this visitors</button>
